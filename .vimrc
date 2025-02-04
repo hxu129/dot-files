@@ -4,6 +4,7 @@
 set encoding=utf-8
 set clipboard=unnamedplus
 set relativenumber
+filetype plugin indent on
 
 " ==================================
 "          Vim-plug Setup
@@ -51,6 +52,9 @@ let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 let g:tex_flavor='latex'
 let g:vimtex_view_method='zathura'
 let g:vimtex_quickfix_mode=0
+let g:vimtex_compiler_method = 'latexmk'
+let g:vimtex_lint_chktex_ignore_warnings = '-n1 -n3 -n8 -n25 -n36'
+let g:vimtex_lint_chktex_parameters = '--localrc=PATH/chktexrc'
 
 " Configuration for tex-conceal.vim
 set conceallevel=1
