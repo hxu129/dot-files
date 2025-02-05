@@ -3,11 +3,15 @@
 " ==================================
 set encoding=utf-8
 set clipboard=unnamedplus
+set number
 set relativenumber
 
 """"""""""""""""""""""""""""""""""""
 " => General
 """"""""""""""""""""""""""""""""""""
+" Set noncompatible to unable vi
+set nocompatible 
+
 " Sets how many lines of history VIM has to remember
 set history=500
 
