@@ -398,6 +398,9 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)')) | 
 " ==================================
 call plug#begin()
 
+" Auto pairs
+Plug 'jiangmiao/auto-pairs'
+
 " Development Plugins
 Plug 'tpope/vim-sensible'          " Sensible defaults for Vim
 
@@ -425,6 +428,15 @@ let g:vimtex_quickfix_mode=0
 let g:vimtex_compiler_method = 'latexmk'
 let g:vimtex_lint_chktex_ignore_warnings = '-n1 -n3 -n8 -n25 -n36'
 let g:vimtex_lint_chktex_parameters = '--localrc=PATH/chktexrc'
+let g:vimtex_compiler_latexmk = {
+    \ 'options': [
+    \ '-shell-escape',
+    \ '-verbose',
+    \ '-file-line-error',
+    \ '-synctex=1',
+    \ '-interaction=nonstopmode',
+    \ ]
+    \}
 autocmd BufWritePost *.tex :VimtexCompile
 
 " Configuration for tex-conceal.vim
