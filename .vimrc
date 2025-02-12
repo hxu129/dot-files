@@ -30,6 +30,8 @@ let mapleader = ","
 " Fast saving
 nmap <leader>w :w!<cr>
 
+" set max pattern
+set maxmempattern=10000
 
 " :W sudo saves the file
 " (useful for handling the permission-denied error)
@@ -265,7 +267,7 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 set laststatus=2
 
 " Format the status line
-set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
+set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c\ \ File:\ %p%%
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
