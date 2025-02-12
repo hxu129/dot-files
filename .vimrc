@@ -39,6 +39,14 @@ command! W execute 'w !sudo tee % > /dev/null' <bar> edit!
 """"""""""""""""""""""""""""""""""""
 " => VIM user interface
 """"""""""""""""""""""""""""""""""""
+" cursor highlisht
+" "开启光亮光标行
+set cursorline
+hi CursorLine   cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
+"开启高亮光标列
+set cursorcolumn
+hi CursorColumn cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
+
 " Set 7 lines to the cursor - when moving using j/k
 set so=7
 
