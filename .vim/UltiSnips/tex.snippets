@@ -19,13 +19,13 @@ snippet template "Basic template" b
 \usepackage[T1]{fontenc}
 \usepackage{textcomp}
 \usepackage[american]{babel}
-\usepackage{amsmath, amssymb}
-
-% code support
+\usepackage{amsmath, amssymb, amsthm}
 \usepackage{algorithm}
 \usepackage{algorithmicx}
-\usepackage[commentColor=gray]{algpseudocode}
-\usepackage{minted}
+% \usepackage[commentColor=gray]{algpseudocode}
+\usepackage{algpseudocode}
+\usepackage{siunitx}
+\usepackage{pgfplots}
 
 % figure support
 \usepackage{import}
@@ -37,6 +37,16 @@ snippet template "Basic template" b
 	% \def\svgwidth{\columnwidth}
 	% \import{./figures/}{#1.pdf_tex}
 % }
+
+% textbox support
+\usepackage{geometry}
+\usepackage{newtxtext}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tcolorbox}
+\geometry{a4paper,centering,scale=0.8}
+
+% code support
+\usepackage{minted}
 
 \pdfsuppresswarningpagegroup=1
 
@@ -509,12 +519,13 @@ snippet mcal "mathcal" iA
 \mathcal{$1}$0
 endsnippet
 
+context "math()"
 snippet lll "l" iA
 \ell
 endsnippet
 
 context "math()"
-snippet nabl "nabla" iA
+snippet grad "gradient" iA
 \nabla 
 endsnippet
 
@@ -536,6 +547,12 @@ endsnippet
 priority 100
 context "math()"
 snippet '(?<!\\)(sin|cos|arccot|cot|csc|ln|log|exp|star|perp)' "ln" rwA
+\\`!p snip.rv = match.group(1)`
+endsnippet
+
+priority 100
+context "math()"
+snippet '(?<!\\)(alpha|beta|gamma|delta|epsilon|zeta|eta|theta|iota|kappa|lambda|mu|nu|xi|omicron|pi|rho|sigma|tau|upsilon|phi|chi|psi|omega|Alpha|Beta|Gamma|Delta|Epsilon|Zeta|Eta|Theta|Iota|Kappa|Lambda|Mu|Nu|Xi|Omicron|Pi|Rho|Sigma|Tau|Upsilon|Phi|Chi|Psi|Omega)' "Greek letter" rwA
 \\`!p snip.rv = match.group(1)`
 endsnippet
 
@@ -743,6 +760,21 @@ snippet DD "D" iA
 \mathcal{D}
 endsnippet
 
+context "math()"
+snippet LNOT "logic not" iA
+\neg
+endsnippet
+
+context "math()"
+snippet LAND "logic and" iA 
+\land
+endsnippet
+
+context "math()"
+snippet LOR "logic or" iA
+\lor
+endsnippet
+
 
 snippet algorithm "Algorithm block" b
 \begin{algorithm}
@@ -829,7 +861,7 @@ endsnippet
 context "algo()"
 snippet Function "procedure" A
 \\Function {${1:Name}}{${2:Parameters}}
-	$1
+	$3
 \\EndFunction $0
 endsnippet
 
@@ -843,6 +875,12 @@ snippet Output "print" wA
 \\Output $0
 endsnippet
 
+context "algo()"
+snippet Get "assignment" A
+\\gets $0
+endsnippet
+
+
 snippet code "Code block" b
 \definecolor{LightGray}{gray}{0.92}
 \begin{minted}[frame=lines, framesep=1.5mm, fontsize=\footnotesize, baselinestretch=1.2, bgcolor=LightGray, linenos]{python}
@@ -855,5 +893,60 @@ snippet bf "textbf"
 \\textbf{$1}$0
 endsnippet
 
+
+snippet ttbox "ttbox" bA
+\framebox{$1} $0
+endsnippet
+
+
+snippet definition "Definition chuck" bA
+\begin{tcolorbox}
+[colback=Emerald!10,colframe=cyan!40!black,title=\textbf{Definition$1}]
+$2
+\end{tcolorbox} $0
+endsnippet
+
+snippet tbox "a simple texbox" bA
+\begin{tcolorbox}[colback=JungleGreen!10!Cerulean!15,colframe=CornflowerBlue!60!Black]
+$1
+\end{tcolorbox} $0
+endsnippet
+
+snippet lemma "lemma chunck" bA
+\begin{tcolorbox}[title=\textbf{Lemma$1},colback=SeaGreen!10!CornflowerBlue!10,colframe=RoyalPurple!55!Aquamarine!100!]
+$2
+\end{tcolorbox} $0
+endsnippet
+
+snippet proposition "proposition chunk" bA
+\begin{tcolorbox}
+[title = \textbf{Proposition$1}, colback=Salmon!20, colframe=Salmon!90!Black]
+$2
+\end{tcolorbox} $0
+endsnippet 
+
+snippet theorem "theorem chunk" bA
+\begin{tcolorbox}[title=\textbf{Theorem$1}, colback=red!5,colframe=red!75!black]
+$2
+\end{tcolorbox} $0
+endsnippet
+
+snippet corollary "corollary chunck" bA
+\begin{tcolorbox}[colback=OliveGreen!10,colframe=Green!70,title=\textbf{\textcolor{white}{Corollary$1}}]
+$2
+\end{tcolorbox} $0
+endsnippet 
+
+snippet example "example" bA
+\begin{tcolorbox}[colback=Green!10,colframe=Green!70,title=\textbf{\textcolor{white}{Example}}]
+$1
+\end{tcolorbox} $0
+endsnippet
+
+snippet exercise "exercise" bA
+\begin{tcolorbox}[colback=Red!10,colframe=Red!70,title=\textbf{\textcolor{white}{Exercise}}]
+$1
+\end{tcolorbox} $0
+endsnippet
 
 # vim:ft=snippets
