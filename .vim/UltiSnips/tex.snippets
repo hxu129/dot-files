@@ -26,6 +26,7 @@ snippet template "Basic template" b
 \usepackage{algpseudocode}
 \usepackage{siunitx}
 \usepackage{pgfplots}
+\usepackage{enumitem}
 
 % figure support
 \usepackage{import}
@@ -104,14 +105,14 @@ endsnippet
 snippet fig "Figure environment" b
 \begin{figure}[${1:htpb}]
 	\centering
-	${2:\includegraphics[width=0.8\textwidth]{$3}}
+	${2:\includegraphics[width=0.8\textwidth]{~/Pictures/Screenshots$3}}
 	\caption{${4:$3}}
 	\label{fig:${5:${3/\W+/-/g}}}
 \end{figure}
 endsnippet
 
 snippet enum "Enumerate" bA
-\begin{enumerate}
+\begin{enumerate}[label=\arabic*.]
 	\item $0
 \end{enumerate}
 endsnippet
@@ -134,7 +135,7 @@ endsnippet
 
 context "math()"
 snippet => "implies" Ai
-\implies
+\rightarrow
 endsnippet
 
 context "math()"
@@ -149,7 +150,7 @@ endsnippet
 
 context "math()"
 snippet iff "iff" Ai
-\iff
+\leftrightarrow
 endsnippet
 
 snippet mk "Math" wA
@@ -169,9 +170,11 @@ endsnippet
 
 snippet ali "Align" bA
 \begin{align*}
-	${1:${VISUAL}}
+	$0
+	& \\\\
 .\end{align*}
 endsnippet
+
 
 
 context "math()"
@@ -323,8 +326,23 @@ snippet conj "conjugate" iA
 endsnippet
 
 context "math()"
+snippet det "deterniminte" iA
+\mathsf{det}
+endsnippet
+
+context "math()"
+snippet sf "mathsf" iA
+\mathsf{$1} $0
+endsnippet
+
+context "math()"
 snippet sum "sum" w
-\sum_{${1:n}=${2:1}}^{${3:\infty}} ${4:a_n z^n}
+\sum_{${1:i}=${2:1}}^{${3:\infty}} ${4:a_n z^n}
+endsnippet
+
+context "math()"
+snippet prod "prod" w
+\prod_{${1:i}=${2:1}}^{${3:\infty}} ${4:a_n z^n}
 endsnippet
 
 context "math()"
@@ -342,10 +360,6 @@ snippet limsup "limsup" w
 \limsup_{${1:n} \to ${2:\infty}} 
 endsnippet
 
-context "math()"
-snippet prod "product" w
-\prod_{${1:n=${2:1}}}^{${3:\infty}} ${4:${VISUAL}} $0
-endsnippet
 
 context "math()"
 snippet driv "derivative" w
@@ -354,7 +368,7 @@ endsnippet
 
 context "math()"
 snippet part "d/dx" w
-\frac{\partial${1:V}}{\partial${2:x}} $0
+\frac{\partial ${1:V}}{\partial ${2:x}} $0
 endsnippet
 
 context "math()"
@@ -432,6 +446,7 @@ snippet AA "forall" iA
 \forall 
 endsnippet
 
+
 context "math()" 
 snippet st "such that" w
 \text{ s.t. }
@@ -448,21 +463,25 @@ y_{n}
 endsnippet
 
 
+priority 1000
 context "math()"
 snippet xii "xi" iA
 x_{i}
 endsnippet
 
+priority 1000
 context "math()"
 snippet yii "yi" iA
 y_{i}
 endsnippet
 
+priority 1000
 context "math()"
 snippet xjj "xj" iA
 x_{j}
 endsnippet
 
+priority 1000
 context "math()"
 snippet yjj "yj" iA
 y_{j}
@@ -473,6 +492,7 @@ snippet xp1 "x" iA
 x_{n+1}
 endsnippet
 
+priority 1000
 context "math()"
 snippet xmm "x" iA
 x_{m}
@@ -540,6 +560,21 @@ snippet ** "cdot" iA
 endsnippet
 
 context "math()"
+snippet conv "convolution" iA
+\circ
+endsnippet
+
+context "math()"
+snippet inpro "inner product" iA
+\langle $1, $2 \rangle $0
+endsnippet
+
+context "math()"
+snippet abs "absolute value" iA
+\| $1 \| $0
+endsnippet
+
+context "math()"
 snippet norm "norm" iA
 \|$1\|$0
 endsnippet
@@ -552,7 +587,7 @@ endsnippet
 
 priority 100
 context "math()"
-snippet '(?<!\\)(alpha|beta|gamma|delta|epsilon|zeta|eta|theta|iota|kappa|lambda|mu|nu|xi|omicron|pi|rho|sigma|tau|upsilon|phi|chi|psi|omega|Alpha|Beta|Gamma|Delta|Epsilon|Zeta|Eta|Theta|Iota|Kappa|Lambda|Mu|Nu|Xi|Omicron|Pi|Rho|Sigma|Tau|Upsilon|Phi|Chi|Psi|Omega)' "Greek letter" rwA
+snippet '(?<!\\)(alpha|beta|gamma|delta|epsilon|zeta|eta|theta|iota|kappa|lambda|mu|nu|xi|omicron|pi|rho|sigma|tau|upsilon|phi|chi|omega|Alpha|Beta|Gamma|Delta|Epsilon|Zeta|Eta|Theta|Iota|Kappa|Lambda|Mu|Nu|Xi|Omicron|Pi|Rho|Sigma|Tau|Upsilon|Phi|Chi|Omega)' "Greek letter" rwA
 \\`!p snip.rv = match.group(1)`
 endsnippet
 
@@ -622,6 +657,11 @@ snippet set "set" wA
 \\{$1\\} $0
 endsnippet
 
+context "math()"
+snippet vec "vector" wA
+\Vec $0
+endsnippet
+
 snippet || "mid" iA
  \mid 
 endsnippet
@@ -653,7 +693,7 @@ endsnippet
 
 context "math()"
 snippet UU "cup" iA
-\cup 
+\mathcal{U} $0 
 endsnippet
 
 snippet uuu "bigcup" iA
@@ -731,10 +771,17 @@ snippet "([a-zA-Z])bar" "bar" riA
 \overline{`!p snip.rv=match.group(1)`}
 endsnippet
 
+
 priority 10
 context "math()"
 snippet "hat" "hat" riA
 \hat{$1}$0
+endsnippet
+
+priority 10
+context "math()"
+snippet "tilde" "tilde" riA
+\tilde{$1}$0
 endsnippet
 
 priority 100
@@ -749,6 +796,15 @@ snippet RR "R" iA
 \mathbb{R}
 endsnippet
 
+context "math()"
+snippet VV "R" iA
+\mathcal{V}
+endsnippet
+
+context "math()"
+snippet WW "R" iA
+\mathcal{W}
+endsnippet
 
 context "math()"
 snippet HH "H" iA
@@ -761,18 +817,35 @@ snippet DD "D" iA
 endsnippet
 
 context "math()"
-snippet LNOT "logic not" iA
-\neg
+snippet NEG "logic not" iA
+\neg $0
 endsnippet
 
 context "math()"
-snippet LAND "logic and" iA 
-\land
+snippet AND "logic and" iA 
+\land $0
+endsnippet
+
+priority 10
+context "math()"
+snippet OR "logic or" iA
+\lor $0
+endsnippet
+
+priority 100
+context "math()"
+snippet XOR "logic or" iA
+\oplus $0
 endsnippet
 
 context "math()"
-snippet LOR "logic or" iA
-\lor
+snippet mod "logic or" iA
+\bmod $0
+endsnippet
+
+context "math()"
+snippet equiv "logic or" iA
+\equiv $0
 endsnippet
 
 
@@ -782,8 +855,8 @@ snippet algorithm "Algorithm block" b
 	\renewcommand{\algorithmicrequire}{\textbf{Input:}}
 	\renewcommand{\algorithmicensure}{\textbf{Output:}}
 	\begin{algorithmic}[1]
-		\Require{$${2:x}$}
-		\Ensure{$${3:y}$}
+		\Require{${2:x}}
+		\Ensure{${3:y}}
 		$1
 	\end{algorithmic}
 \end{algorithm} $0
@@ -791,7 +864,7 @@ endsnippet
 
 context "algo()"
 snippet State "State in algo" A
-\\State {$1} $0
+\\State  $0
 endsnippet
 
 context "algo()"
@@ -829,7 +902,7 @@ endsnippet
 
 context "algo()"
 snippet For "For in algo" A
-\\For {$1}
+\\For{$1}
 	$0
 \\EndFor
 endsnippet
@@ -862,7 +935,9 @@ context "algo()"
 snippet Function "procedure" A
 \\Function {${1:Name}}{${2:Parameters}}
 	$3
-\\EndFunction $0
+\\EndFunction 
+
+\\State $0
 endsnippet
 
 context "algo()"
@@ -947,6 +1022,15 @@ snippet exercise "exercise" bA
 \begin{tcolorbox}[colback=Red!10,colframe=Red!70,title=\textbf{\textcolor{white}{Exercise}}]
 $1
 \end{tcolorbox} $0
+endsnippet
+
+snippet under "underset" w
+\\underset{\text{$2}}{\text{$1}} $0
+endsnippet
+
+context "math()"
+snippet therefore "therefore" wA
+\\therefore $0
 endsnippet
 
 # vim:ft=snippets

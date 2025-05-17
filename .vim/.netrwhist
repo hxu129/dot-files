@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =9
+let g:netrw_dirhist_9='/home/xh/coding/latex/notes/discrete-math/hw-4'
+let g:netrw_dirhist_8='/home/xh/coding/latex/notes/DAA/lec3'
+let g:netrw_dirhist_7='/home/xh/config/.vim/UltiSnips'
+let g:netrw_dirhist_6='/home/xh/coding/latex/notes/ML/lec-3'
+let g:netrw_dirhist_5='/home/xh/coding/latex/notes/DAA/lab4'
+let g:netrw_dirhist_4='/home/xh/coding/latex/notes/discrete-math/lec-2'
+let g:netrw_dirhist_3='/home/xh/config/.vim/UltiSnips'
+let g:netrw_dirhist_2='/home/xh/coding/latex/notes/DSAD/lec-1'
+let g:netrw_dirhist_1='/home/xh/coding/latex/notes/DSAD'
+let g:netrw_dirhist_0='/home/xh/notes/DSAD/lec-2'
